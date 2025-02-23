@@ -72,6 +72,14 @@ A aplicação estará rodando em **http://localhost:3000/fsw-donalds** 🚀
 - [x] Consulta de pedidos pelo CPF 📋
 - [ ] (Adicionar funcionalidades futuras se houver)
 
+## Observação sobre Responsividade
+
+A aplicação foi projetada para ser melhor visualizada em dispositivos móveis. Para melhor experiência, abra o DevTools no navegador (F12) e alterne para a visualização responsiva ou minimize a tela para simular um dispositivo móvel. A responsividade para desktop ainda está em fase de ajustes.
+
+## Contribuição
+
+Sinta-se à vontade para contribuir! Fork o repositório, faça suas alterações e abra um Pull Request.
+
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
