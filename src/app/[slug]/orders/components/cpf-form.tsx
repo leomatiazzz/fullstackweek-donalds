@@ -56,7 +56,7 @@ const CpfForm = () => {
   };
   return (
     <Drawer open>
-      <DrawerContent>
+      <DrawerContent className="mx-auto max-w-md">
         <DrawerHeader>
           <DrawerTitle>Visualizar Pedidos</DrawerTitle>
           <DrawerDescription>

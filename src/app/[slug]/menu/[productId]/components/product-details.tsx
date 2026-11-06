@@ -48,28 +48,31 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   };
   return (
     <>
-      <div className="relative z-50 mt-[-1.5rem] flex flex-auto flex-col overflow-hidden rounded-t-3xl p-5">
-        <div className="flex-auto overflow-hidden">
+      <div className="relative z-10 mt-[-1.5rem] flex flex-auto flex-col justify-between rounded-t-3xl bg-white p-6 md:mt-0 md:rounded-none md:p-8">
+        <div className="flex-auto space-y-4">
           {/* RESTAURANTE */}
-          <div className="flex items-center gap-1.5">
-            <Image
-              src={product.restaurant.avatarImageUrl}
-              alt={product.restaurant.name}
-              width={16}
-              height={16}
-              className="rounded-full"
-            />
+          <div className="flex items-center gap-2">
+            <div className="relative h-5 w-5 overflow-hidden rounded-full">
+              <Image
+                src={product.restaurant.avatarImageUrl}
+                alt={product.restaurant.name}
+                fill
+                className="object-cover"
+              />
+            </div>
             <p className="text-xs text-muted-foreground">
               {product.restaurant.name}
             </p>
           </div>
 
           {/* NOME DO PRODUTO */}
-          <h2 className="mt-1 text-xl font-semibold">{product.name}</h2>
+          <h2 className="text-xl font-bold tracking-tight md:text-2xl">
+            {product.name}
+          </h2>
 
           {/* PREÇO E QUANTIDADE */}
-          <div className="mt-3 flex items-center justify-between">
-            <h3 className="text-xl font-semibold">
+          <div className="flex items-center justify-between pt-1">
+            <h3 className="text-xl font-bold text-foreground md:text-2xl">
               {formatCurrency(product.price)}
             </h3>
             <div className="flex items-center gap-3 text-center">
@@ -80,7 +83,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
               >
                 <ChevronLeftIcon />
               </Button>
-              <p className="w-4">{quantity}</p>
+              <p className="w-4 font-semibold">{quantity}</p>
               <Button
                 variant="destructive"
                 className="h-8 w-8 rounded-xl"
@@ -91,22 +94,22 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             </div>
           </div>
 
-          <ScrollArea className="h-full">
+          <ScrollArea className="h-[220px] pr-2 md:h-[260px]">
             {/* SOBRE */}
-            <div className="mt-6 space-y-3">
-              <h4 className="font-semibold">Sobre</h4>
+            <div className="mt-4 space-y-2">
+              <h4 className="text-sm font-semibold">Sobre</h4>
               <p className="text-sm text-muted-foreground">
                 {product.description}
               </p>
             </div>
 
-            {/* INGREDIENTS */}
-            <div className="mt-6 space-y-3">
-              <div className="5 flex items-center gap-1">
+            {/* INGREDIENTES */}
+            <div className="mt-5 space-y-2">
+              <div className="flex items-center gap-1.5">
                 <ChefHatIcon size={18} />
-                <h4 className="font-semibold">Ingredientes</h4>
+                <h4 className="text-sm font-semibold">Ingredientes</h4>
               </div>
-              <ul className="text-muted-fo list-disc px-5 text-sm text-muted-foreground">
+              <ul className="space-y-1 px-5 text-sm text-muted-foreground list-disc">
                 {product.ingredients.map((ingredient) => (
                   <li key={ingredient}>{ingredient}</li>
                 ))}
@@ -115,9 +118,14 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           </ScrollArea>
         </div>
 
-        <Button className="w-full rounded-full" onClick={handleAddToCart}>
-          Adicionar à sacola
-        </Button>
+        <div className="pt-6">
+          <Button
+            className="w-full rounded-full font-medium"
+            onClick={handleAddToCart}
+          >
+            Adicionar à sacola
+          </Button>
+        </div>
       </div>
       <CartSheet />
     </>

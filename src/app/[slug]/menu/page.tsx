@@ -35,13 +35,13 @@ const RestaurantMenuPage = async ({
     return notFound();
   }
   return (
-    <div>
-      <RestaurantHeader restaurant={restaurant} />
-      <RestaurantCategories restaurant={restaurant} />
+    <div className="min-h-screen bg-muted/20">
+      <div className="mx-auto max-w-4xl bg-white shadow-sm md:my-6 md:overflow-hidden md:rounded-3xl md:border">
+        <RestaurantHeader restaurant={restaurant} />
+        <RestaurantCategories restaurant={restaurant} />
+      </div>
     </div>
   );
 };
 
 export default RestaurantMenuPage;
-
-// http://localhost:3000/fsw-donalds/menu?consumptionMethod=dine_in

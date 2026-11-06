@@ -37,7 +37,11 @@ const OrdersPage = async ({ searchParams }: OrdersPageProps) => {
       },
     },
   });
-  return <OrderList orders={orders} />;
+  return (
+    <div className="min-h-screen bg-muted/20 md:py-8">
+      <OrderList orders={orders} />
+    </div>
+  );
 };
 
 export default OrdersPage;

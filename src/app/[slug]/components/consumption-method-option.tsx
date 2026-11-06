@@ -21,9 +21,9 @@ const ConsumptionMethodOption = ({
   option,
 }: ConsumptionMethodOptionProps) => {
   return (
-    <Card>
-      <CardContent className="flex flex-col items-center gap-8 py-8">
-        <div className="relative h-[80px] w-[80px]">
+    <Card className="transition-all duration-200 hover:border-primary/50 hover:shadow-md">
+      <CardContent className="flex flex-col items-center gap-6 p-6 md:gap-8 md:p-8">
+        <div className="relative h-[80px] w-[80px] md:h-[100px] md:w-[100px]">
           <Image
             src={imageUrl}
             fill
@@ -31,7 +31,7 @@ const ConsumptionMethodOption = ({
             className="object-contain"
           />
         </div>
-        <Button variant="secondary" className="rounded-full" asChild>
+        <Button variant="secondary" className="w-full rounded-full" asChild>
           <Link href={`/${slug}/menu?consumptionMethod=${option}`}>
             {buttonText}
           </Link>

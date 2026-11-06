@@ -17,11 +17,11 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
   const handleBackClick = () => router.back();
   const handleOrdersClick = () => router.push(`/${slug}/orders`);
   return (
-    <div className="relative h-[250px] w-full">
+    <div className="relative h-[250px] w-full md:h-[320px]">
       <Button
         variant="secondary"
         size="icon"
-        className="absolute left-4 top-4 z-50 rounded-full"
+        className="absolute left-4 top-4 z-50 rounded-full bg-white/80 shadow-sm backdrop-blur-sm hover:bg-white"
         onClick={handleBackClick}
       >
         <ChevronLeftIcon />
@@ -31,11 +31,12 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
         alt={restaurant.name}
         fill
         className="object-cover"
+        priority
       />
       <Button
         variant="secondary"
         size="icon"
-        className="absolute right-4 top-4 z-50 rounded-full"
+        className="absolute right-4 top-4 z-50 rounded-full bg-white/80 shadow-sm backdrop-blur-sm hover:bg-white"
         onClick={handleOrdersClick}
       >
         <ScrollTextIcon />
