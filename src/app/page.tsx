@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/card";
 import { db } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 const HomePage = async () => {
   let restaurants: Array<{
     id: string;
