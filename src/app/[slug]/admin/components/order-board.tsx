@@ -202,7 +202,7 @@ const OrderBoard = ({ orders, slug }: OrderBoardProps) => {
                 ) : (
                   <FlameIcon className="h-4 w-4 text-amber-300" />
                 )}
-                Iniciar Preparo
+                Iniciar preparo
               </Button>
             )}
 
@@ -324,7 +324,7 @@ const OrderBoard = ({ orders, slug }: OrderBoardProps) => {
           <RefreshCwIcon
             className={`h-3.5 w-3.5 ${isPending ? "animate-spin" : ""}`}
           />
-          Atualizar Fila
+          Atualizar fila
         </Button>
       </div>
 
@@ -429,7 +429,7 @@ const OrderBoard = ({ orders, slug }: OrderBoardProps) => {
           <div className="mb-4 flex items-center justify-between border-b pb-3">
             <div className="flex items-center gap-2">
               <span className="h-3 w-3 rounded-full bg-blue-500 animate-pulse" />
-              <CardTitle className="text-base font-bold">Em Preparo</CardTitle>
+              <CardTitle className="text-base font-bold">Em preparo</CardTitle>
             </div>
             <Badge variant="secondary" className="font-bold">
               {inPreparationOrders.length}

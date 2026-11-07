@@ -99,7 +99,7 @@ const AdminPage = async ({ params }: AdminPageProps) => {
             >
               <Link href={`/${slug}`}>
                 <ArrowLeftIcon className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">Ver Cardápio</span>
+                <span className="hidden sm:inline">Ver cardápio</span>
                 <span className="sm:hidden">Cardápio</span>
               </Link>
             </Button>

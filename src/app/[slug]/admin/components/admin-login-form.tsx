@@ -101,7 +101,7 @@ const AdminLoginForm = ({
                 className="text-xs font-semibold flex items-center gap-1.5"
               >
                 <KeyRoundIcon className="h-3.5 w-3.5 text-muted-foreground" />
-                PIN ou Senha de Acesso da Equipe
+                PIN ou senha de acesso da equipe
               </Label>
               <div className="relative">
                 <Input
@@ -147,7 +147,7 @@ const AdminLoginForm = ({
               ) : (
                 <LockIcon className="h-4 w-4" />
               )}
-              Acessar Painel
+              Acessar painel
             </Button>
             <Button
               variant="ghost"
@@ -157,7 +157,7 @@ const AdminLoginForm = ({
             >
               <Link href={`/${slug}`}>
                 <ArrowLeftIcon className="h-3.5 w-3.5" />
-                Voltar para o Cardápio
+                Voltar para o cardápio
               </Link>
             </Button>
           </CardFooter>
