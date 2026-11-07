@@ -38,3 +38,9 @@ export const isValidCpf = (cpf: string): boolean => {
 
   return secondVerifier === parseInt(cpf.charAt(10));
 };
+
+export const formatCpf = (cpf: string) => {
+  const clean = cpf.replace(/\D/g, "");
+  if (clean.length !== 11) return cpf;
+  return clean.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+};

@@ -1,9 +1,10 @@
 "use client";
 
 import { OrderStatus, Prisma } from "@prisma/client";
-import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -38,6 +39,7 @@ const getStatusLabel = (status: OrderStatus) => {
 };
 
 const OrderList = ({ orders }: OrderListProps) => {
+  const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
   const handleBackClick = () => router.back();
   return (
@@ -117,6 +119,18 @@ const OrderList = ({ orders }: OrderListProps) => {
                     {formatCurrency(order.total)}
                   </p>
                 </div>
+                <Separator />
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  className="w-full gap-1.5 rounded-full text-xs font-semibold hover:border-primary hover:text-primary"
+                >
+                  <Link href={`/${slug}/orders/${order.id}`}>
+                    Acompanhar Pedido ao Vivo
+                    <ChevronRightIcon className="h-3.5 w-3.5" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
           ))}

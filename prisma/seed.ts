@@ -15,7 +15,7 @@ const main = async () => {
         avatarImageUrl:
           "https://u9a6wmr3as.ufs.sh/f/jppBrbk0cChQvcNP9rHlEJu1vCY5kLqzjf29HKaeN78Z6pRy",
         coverImageUrl:
-          "https://u9a6wmr3as.ufs.sh/f/jppBrbk0cChQac8bHYlkBUjlHSKiuseLm2hIFzVY0OtxEPnw",
+          "https://archello.s3.eu-central-1.amazonaws.com/images/2022/03/21/aaksen-responsible-aarchitecture-mcdonald--039-s-kiara-artha-restaurants-archello.1647846591.1631.jpg",
       },
     });
     const combosCategory = await tx.menuCategory.create({
@@ -320,3 +320,5 @@ main()
   .finally(async () => {
     await prismaClient.$disconnect();
   });
+
+export {};
