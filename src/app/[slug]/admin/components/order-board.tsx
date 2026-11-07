@@ -21,7 +21,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { formatCurrency } from "@/helpers/format-currency";
 
-import { formatCpf } from "../../menu/helpers/cpf";
+import { maskCpf } from "../../menu/helpers/cpf";
 import { updateOrderStatus } from "../actions/update-order-status";
 
 export type AdminOrder = Prisma.OrderGetPayload<{
@@ -126,7 +126,7 @@ const OrderBoard = ({ orders, slug }: OrderBoardProps) => {
                 {order.customerName}
               </p>
               <p className="text-xs text-muted-foreground">
-                CPF: {formatCpf(order.customerCpf)}
+                CPF: {maskCpf(order.customerCpf)}
               </p>
             </div>
             <Badge

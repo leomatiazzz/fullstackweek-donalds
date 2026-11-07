@@ -1,4 +1,5 @@
 import { ArrowLeftIcon, ChefHatIcon } from "lucide-react";
+import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -6,6 +7,8 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { db } from "@/lib/prisma";
 
+import AdminLoginForm from "./components/admin-login-form";
+import { AdminLogoutButton } from "./components/admin-logout-button";
 import OrderBoard from "./components/order-board";
 
 interface AdminPageProps {
@@ -23,6 +26,23 @@ const AdminPage = async ({ params }: AdminPageProps) => {
 
   if (!restaurant) {
     return notFound();
+  }
+
+  // Verifica o cookie de autenticação do painel da cozinha
+  const cookieStore = await cookies();
+  const hasAccess =
+    cookieStore.get(`admin_access_${slug}`)?.value === "authenticated";
+
+  if (!hasAccess) {
+    return (
+      <div className="min-h-screen bg-muted/20">
+        <AdminLoginForm
+          slug={slug}
+          restaurantName={restaurant.name}
+          avatarImageUrl={restaurant.avatarImageUrl}
+        />
+      </div>
+    );
   }
 
   const orders = await db.order.findMany({
@@ -44,7 +64,7 @@ const AdminPage = async ({ params }: AdminPageProps) => {
   return (
     <div className="min-h-screen bg-muted/20 pb-16">
       {/* HEADER DO PAINEL ADMIN */}
-      <header className="border-b bg-white">
+      <header className="border-b bg-white shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
           <div className="flex items-center gap-3">
             <div className="relative h-10 w-10 overflow-hidden rounded-xl shadow-sm">
@@ -70,18 +90,21 @@ const AdminPage = async ({ params }: AdminPageProps) => {
             </div>
           </div>
 
-          <Button
-            variant="outline"
-            size="sm"
-            asChild
-            className="gap-1.5 rounded-full"
-          >
-            <Link href={`/${slug}`}>
-              <ArrowLeftIcon className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">Ver Cardápio</span>
-              <span className="sm:hidden">Voltar</span>
-            </Link>
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              asChild
+              className="gap-1.5 rounded-full"
+            >
+              <Link href={`/${slug}`}>
+                <ArrowLeftIcon className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">Ver Cardápio</span>
+                <span className="sm:hidden">Cardápio</span>
+              </Link>
+            </Button>
+            <AdminLogoutButton slug={slug} />
+          </div>
         </div>
       </header>
 
@@ -94,4 +117,3 @@ const AdminPage = async ({ params }: AdminPageProps) => {
 };
 
 export default AdminPage;
-

@@ -44,3 +44,9 @@ export const formatCpf = (cpf: string) => {
   if (clean.length !== 11) return cpf;
   return clean.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
 };
+
+export const maskCpf = (cpf: string) => {
+  const clean = cpf.replace(/\D/g, "");
+  if (clean.length !== 11) return cpf;
+  return `${clean.slice(0, 3)}.***.***-**`;
+};
