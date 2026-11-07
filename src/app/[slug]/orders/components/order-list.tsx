@@ -55,7 +55,7 @@ const OrderList = ({ orders }: OrderListProps) => {
         </Button>
         <div className="flex items-center gap-2">
           <ScrollTextIcon className="h-5 w-5 text-primary" />
-          <h2 className="text-lg font-bold tracking-tight">Meus Pedidos</h2>
+          <h2 className="text-lg font-bold tracking-tight">Meus pedidos</h2>
         </div>
         <div className="w-9" />
       </div>
@@ -127,7 +127,7 @@ const OrderList = ({ orders }: OrderListProps) => {
                   className="w-full gap-1.5 rounded-full text-xs font-semibold hover:border-primary hover:text-primary"
                 >
                   <Link href={`/${slug}/orders/${order.id}`}>
-                    Acompanhar Pedido ao Vivo
+                    Acompanhar pedido ao vivo
                     <ChevronRightIcon className="h-3.5 w-3.5" />
                   </Link>
                 </Button>

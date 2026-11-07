@@ -58,7 +58,7 @@ const CpfForm = () => {
     <Drawer open>
       <DrawerContent className="mx-auto max-w-md">
         <DrawerHeader>
-          <DrawerTitle>Visualizar Pedidos</DrawerTitle>
+          <DrawerTitle>Visualizar pedidos</DrawerTitle>
           <DrawerDescription>
             Insira seu CPF abaixo para visualizar seus pedidos.
           </DrawerDescription>
