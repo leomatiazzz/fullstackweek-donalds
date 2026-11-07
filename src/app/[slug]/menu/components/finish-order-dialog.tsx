@@ -97,7 +97,7 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
       <DrawerTrigger asChild></DrawerTrigger>
       <DrawerContent className="mx-auto max-w-lg">
         <DrawerHeader>
-          <DrawerTitle>Finalizar Pedido</DrawerTitle>
+          <DrawerTitle>Finalizar pedido</DrawerTitle>
           <DrawerDescription>
             Insira suas informações abaixo para finalizar o seu pedido.
           </DrawerDescription>

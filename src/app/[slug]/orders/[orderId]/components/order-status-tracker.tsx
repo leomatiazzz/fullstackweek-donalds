@@ -65,13 +65,13 @@ const OrderStatusTracker = ({ order }: OrderStatusTrackerProps) => {
   const steps = [
     {
       id: OrderStatus.PENDING,
-      title: "Pedido Recebido",
+      title: "Pedido recebido",
       description: "Aguardando início do preparo pela equipe",
       icon: ClockIcon,
     },
     {
       id: OrderStatus.IN_PREPARATION,
-      title: "Em Preparação",
+      title: "Em preparação",
       description: "Seus lanches estão sendo preparados com carinho",
       icon: FlameIcon,
     },
@@ -141,7 +141,7 @@ const OrderStatusTracker = ({ order }: OrderStatusTrackerProps) => {
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Acompanhamento em Tempo Real
+                Acompanhamento em tempo real
               </span>
               <h1 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">
                 Pedido #{order.id}
@@ -264,7 +264,7 @@ const OrderStatusTracker = ({ order }: OrderStatusTrackerProps) => {
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base font-bold">
-            Resumo dos Itens ({order.orderProducts.length})
+            Resumo dos itens ({order.orderProducts.length})
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -297,7 +297,7 @@ const OrderStatusTracker = ({ order }: OrderStatusTrackerProps) => {
           <Separator />
 
           <div className="flex items-center justify-between text-base font-bold">
-            <span>Valor Total</span>
+            <span>Valor total</span>
             <span className="text-primary">{formatCurrency(order.total)}</span>
           </div>
         </CardContent>
@@ -306,7 +306,7 @@ const OrderStatusTracker = ({ order }: OrderStatusTrackerProps) => {
       {/* AÇÕES DE NAVEGAÇÃO */}
       <div className="flex flex-col gap-3 sm:flex-row">
         <Button asChild className="flex-1 rounded-full font-medium">
-          <Link href={`/${order.restaurant.slug}`}>Fazer Novo Pedido</Link>
+          <Link href={`/${order.restaurant.slug}`}>Fazer novo pedido</Link>
         </Button>
         <Button
           variant="outline"
@@ -314,7 +314,7 @@ const OrderStatusTracker = ({ order }: OrderStatusTrackerProps) => {
           className="flex-1 rounded-full font-medium"
         >
           <Link href={`/${order.restaurant.slug}/orders?cpf=${order.customerCpf}`}>
-            Ver Todos Meus Pedidos
+            Ver todos meus pedidos
           </Link>
         </Button>
       </div>
