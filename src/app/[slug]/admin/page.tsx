@@ -7,9 +7,9 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { db } from "@/lib/prisma";
 
+import { AdminDashboardTabs } from "./components/admin-dashboard-tabs";
 import AdminLoginForm from "./components/admin-login-form";
 import { AdminLogoutButton } from "./components/admin-logout-button";
-import OrderBoard from "./components/order-board";
 
 interface AdminPageProps {
   params: Promise<{ slug: string }>;
@@ -45,21 +45,51 @@ const AdminPage = async ({ params }: AdminPageProps) => {
     );
   }
 
-  const orders = await db.order.findMany({
-    where: {
-      restaurantId: restaurant.id,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-    include: {
-      orderProducts: {
-        include: {
-          product: true,
+  const [orders, complaints, traces] = await Promise.all([
+    db.order.findMany({
+      where: {
+        restaurantId: restaurant.id,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      include: {
+        orderProducts: {
+          include: {
+            product: true,
+          },
         },
       },
-    },
-  });
+    }),
+    db.complaint.findMany({
+      where: {
+        restaurantId: restaurant.id,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      include: {
+        order: {
+          select: {
+            id: true,
+            customerName: true,
+            customerCpf: true,
+            total: true,
+            status: true,
+          },
+        },
+      },
+    }),
+    db.agentTrace.findMany({
+      where: {
+        restaurantId: restaurant.id,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 50,
+    }),
+  ]);
 
   return (
     <div className="min-h-screen bg-muted/20 pb-16">
@@ -81,11 +111,11 @@ const AdminPage = async ({ params }: AdminPageProps) => {
                   {restaurant.name}
                 </h1>
                 <span className="flex items-center gap-1 rounded-full bg-primary/20 px-2.5 py-0.5 text-[11px] font-semibold text-foreground">
-                  <ChefHatIcon className="h-3 w-3 text-primary" /> Cozinha (KDS)
+                  <ChefHatIcon className="h-3 w-3 text-primary" /> Painel geral
                 </span>
               </div>
               <p className="text-xs text-muted-foreground">
-                Gestão e status de pedidos em tempo real
+                Gestão KDS, IA de atendimento & reclamações
               </p>
             </div>
           </div>
@@ -108,9 +138,14 @@ const AdminPage = async ({ params }: AdminPageProps) => {
         </div>
       </header>
 
-      {/* CONTEÚDO PRINCIPAL (KANBAN BOARD) */}
+      {/* CONTEÚDO PRINCIPAL (DASHBOARD TABS) */}
       <main className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
-        <OrderBoard orders={orders} slug={slug} />
+        <AdminDashboardTabs
+          orders={orders}
+          complaints={complaints}
+          traces={traces}
+          slug={slug}
+        />
       </main>
     </div>
   );

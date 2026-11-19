@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import { db } from "@/lib/prisma";
 
+import { SupportAgentWidget } from "../components/support-agent-widget";
 import RestaurantCategories from "./components/categories";
 import RestaurantHeader from "./components/header";
 
@@ -40,6 +41,7 @@ const RestaurantMenuPage = async ({
         <RestaurantHeader restaurant={restaurant} />
         <RestaurantCategories restaurant={restaurant} />
       </div>
+      <SupportAgentWidget slug={slug} restaurantName={restaurant.name} />
     </div>
   );
 };

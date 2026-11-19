@@ -32,7 +32,7 @@ export const AdminLogoutButton = ({ slug }: AdminLogoutButtonProps) => {
       className="gap-1.5 rounded-full text-xs text-muted-foreground hover:border-destructive hover:text-destructive"
       onClick={handleLogout}
       disabled={isPending}
-      title="Sair / Bloquear Painel"
+      title="Sair / bloquear painel"
     >
       <LogOutIcon className="h-3.5 w-3.5" />
       <span className="hidden sm:inline">Bloquear</span>

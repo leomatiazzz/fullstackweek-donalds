@@ -212,7 +212,7 @@ const OrderBoard = ({ orders, slug }: OrderBoardProps) => {
                   variant="outline"
                   size="icon"
                   className="rounded-xl"
-                  title="Voltar para Pendente"
+                  title="Voltar para pendente"
                   disabled={isThisOrderUpdating || isPending}
                   onClick={() =>
                     handleStatusChange(order.id, OrderStatus.PENDING)
@@ -232,7 +232,7 @@ const OrderBoard = ({ orders, slug }: OrderBoardProps) => {
                   ) : (
                     <CheckCircle2Icon className="h-4 w-4" />
                   )}
-                  Finalizar Pedido
+                  Finalizar pedido
                 </Button>
               </div>
             )}
@@ -241,7 +241,7 @@ const OrderBoard = ({ orders, slug }: OrderBoardProps) => {
               <div className="flex items-center justify-between rounded-xl bg-green-50 p-2 text-green-700">
                 <div className="flex items-center gap-1.5 text-xs font-semibold">
                   <CheckCircle2Icon className="h-4 w-4" />
-                  Pronto / Entregue
+                  Pronto / entregue
                 </div>
                 <Button
                   variant="ghost"
@@ -347,7 +347,7 @@ const OrderBoard = ({ orders, slug }: OrderBoardProps) => {
           className="rounded-xl flex flex-col py-3 h-auto"
           onClick={() => setMobileTab(OrderStatus.IN_PREPARATION)}
         >
-          <span className="text-xs">Em Preparo</span>
+          <span className="text-xs">Em preparo</span>
           <span className="font-bold text-sm">
             ({inPreparationOrders.length})
           </span>
