@@ -23,6 +23,8 @@ model Restaurant {
   menuCategories MenuCategory[]
   products       Product[]
   orders         Order[]
+  complaints     Complaint[]
+  agentTraces    AgentTrace[]
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
 }
@@ -61,6 +63,7 @@ model Order {
   restaurant        Restaurant        @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
   restaurantId      String
   orderProducts     OrderProduct[]
+  complaints        Complaint[]
   customerName      String
   customerCpf       String
   createdAt         DateTime          @default(now())
@@ -88,4 +91,45 @@ enum OrderStatus {
 enum ConsumptionMethod {
   TAKEAWAY
   DINE_IN
+}
+
+model Complaint {
+  id           String            @id @default(uuid())
+  order        Order             @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId      Int
+  restaurant   Restaurant        @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId String
+  category     ComplaintCategory
+  description  String
+  status       ComplaintStatus   @default(OPEN)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+}
+
+enum ComplaintCategory {
+  DELAY
+  WRONG_ITEM
+  QUALITY
+  REFUND_REQUEST
+  OTHER
+}
+
+enum ComplaintStatus {
+  OPEN
+  IN_REVIEW
+  RESOLVED
+}
+
+model AgentTrace {
+  id                String     @id @default(uuid())
+  restaurant        Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId      String
+  userMessage       String
+  assistantResponse String
+  toolsCalled       Json       @default("[]")
+  stepsCount        Int        @default(0)
+  totalLatencyMs    Int        @default(0)
+  modelName         String     @default("gemini-2.5-flash")
+  hasError          Boolean    @default(false)
+  createdAt         DateTime   @default(now())
 }
