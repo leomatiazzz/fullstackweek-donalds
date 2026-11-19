@@ -161,10 +161,10 @@ const OrderStatusTracker = ({ order }: OrderStatusTrackerProps) => {
               }`}
             >
               {order.status === OrderStatus.FINISHED
-                ? "Pronto para Retirada"
+                ? "Pronto para retirada"
                 : order.status === OrderStatus.IN_PREPARATION
-                  ? "Na Chapa / Preparando"
-                  : "Aguardando Cozinha"}
+                  ? "Na chapa / preparando"
+                  : "Aguardando cozinha"}
             </Badge>
           </div>
 

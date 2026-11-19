@@ -22,7 +22,7 @@ const CartSheet = () => {
     <Sheet open={isOpen} onOpenChange={toggleCart}>
       <SheetContent className="w-full sm:max-w-md">
         <SheetHeader>
-          <SheetTitle className="text-left font-bold">Sua Sacola</SheetTitle>
+          <SheetTitle className="text-left font-bold">Sua sacola</SheetTitle>
         </SheetHeader>
         <div className="flex h-full flex-col py-5">
           <ScrollArea className="flex-auto pr-3">

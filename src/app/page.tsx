@@ -45,7 +45,7 @@ const HomePage = async () => {
             <UtensilsIcon className="h-8 w-8" />
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-5xl">
-            Escolha seu Restaurante
+            Escolha seu restaurante
           </h1>
           <p className="max-w-xl text-sm text-muted-foreground md:text-base">
             Selecione uma de nossas unidades para acessar o cardápio interativo e
@@ -90,7 +90,7 @@ const HomePage = async () => {
                 </CardHeader>
                 <CardContent className="p-5 pt-3">
                   <Button asChild className="w-full rounded-full font-medium">
-                    <Link href={`/${restaurant.slug}`}>Acessar Cardápio</Link>
+                    <Link href={`/${restaurant.slug}`}>Acessar cardápio</Link>
                   </Button>
                 </CardContent>
               </Card>

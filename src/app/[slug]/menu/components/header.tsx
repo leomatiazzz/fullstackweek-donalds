@@ -41,7 +41,7 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
           size="icon"
           className="rounded-full bg-white/80 shadow-sm backdrop-blur-sm hover:bg-white"
           onClick={handleAdminClick}
-          title="Painel da Cozinha (KDS)"
+          title="Painel da cozinha (KDS)"
         >
           <ChefHatIcon className="h-4 w-4" />
         </Button>
@@ -50,7 +50,7 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
           size="icon"
           className="rounded-full bg-white/80 shadow-sm backdrop-blur-sm hover:bg-white"
           onClick={handleOrdersClick}
-          title="Meus Pedidos"
+          title="Meus pedidos"
         >
           <ScrollTextIcon className="h-4 w-4" />
         </Button>
